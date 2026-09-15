@@ -1,7 +1,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
-# Copyright (C) 2022-2025 The OrangeFox Recovery Project
+# Copyright (C) 2022-2026 The OrangeFox Recovery Project
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 
@@ -93,14 +93,8 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
 # Qcom decryption
 PRODUCT_PACKAGES += \
     qcom_decrypt \
-    qcom_decrypt_fbe
-
-# Crypto
-AERA_INCLUDE_CRYPTO := true
-AERA_INCLUDE_CRYPTO_FBE := true
-AERA_INCLUDE_FBE_METADATA_DECRYPT := true
-BOARD_USES_QCOM_FBE_DECRYPTION := true
-BOARD_USES_METADATA_PARTITION := true
+    qcom_decrypt_fbe \
+    android.hardware.security.keymint-service.wrapper
 
 # Platform
 PLATFORM_VERSION := 99.87.36
@@ -116,3 +110,11 @@ PRODUCT_PACKAGES += \
 # skip some snapshot stuff in update_engine
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.virtual_ab.skip_snapshot_creation=true
+
+# OMAPI
+AERA_INCLUDE_OMAPI := true
+
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health-service.qti \
+    android.hardware.health-service.qti_recovery
