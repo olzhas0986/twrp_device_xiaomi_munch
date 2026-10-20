@@ -146,32 +146,43 @@ int32_t set_boot_lun(char *sg_dev,uint8_t boot_lun_id);
  */
 static int blk_rw(int fd, int rw, int64_t offset, uint8_t *buf, unsigned len)
 {
-    int r;
-
-    if (lseek64(fd, offset, SEEK_SET) < 0) {
+    off64_t position;
+    do {
+        position = lseek64(fd, offset, SEEK_SET);
+    } while (position < 0 && errno == EINTR);
+    if (position < 0) {
         fprintf(stderr, "block dev lseek64 %" PRIi64 " failed: %s\n", offset,
                 strerror(errno));
         return -1;
     }
 
-    if (rw)
-        r = write(fd, buf, len);
-    else
-        r = read(fd, buf, len);
+    unsigned done = 0;
+    while (done < len) {
+        ssize_t transferred = rw ? write(fd, buf + done, len - done)
+                                 : read(fd, buf + done, len - done);
+        if (transferred < 0 && errno == EINTR)
+            continue;
+        if (transferred <= 0) {
+            if (transferred == 0)
+                errno = EIO;
+            fprintf(stderr, "block dev %s failed after %u of %u bytes: %s\n",
+                    rw ? "write" : "read", done, len, strerror(errno));
+            return -1;
+        }
+        done += transferred;
+    }
 
-    if (r < 0) {
-        fprintf(stderr, "block dev %s failed: %s\n", rw ? "write" : "read",
-                strerror(errno));
-    } else {
-        if (rw) {
-            r = fsync(fd);
-            if (r < 0)
-                fprintf(stderr, "fsync failed: %s\n", strerror(errno));
-        } else {
-            r = 0;
+    if (rw) {
+        int result;
+        do {
+            result = fsync(fd);
+        } while (result < 0 && errno == EINTR);
+        if (result < 0) {
+            fprintf(stderr, "fsync failed: %s\n", strerror(errno));
+            return -1;
         }
     }
-    return r;
+    return 0;
 }
 
 
