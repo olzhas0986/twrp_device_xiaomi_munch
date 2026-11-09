@@ -1,6 +1,7 @@
 # Copyright (c) 2017-2018,2020 The Linux Foundation. All rights reserved.
 #
 # Copyright (C) 2022-2025 The OrangeFox Recovery Project
+# Modified in 2026 by olzhas0986
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -88,4 +89,3 @@ on boot
     start health-hal-2-1
     start vendor.qti.vibrator
     setprop sys.usb.config adb
-#

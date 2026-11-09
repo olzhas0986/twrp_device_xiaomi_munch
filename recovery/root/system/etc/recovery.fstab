@@ -1,4 +1,5 @@
 # Copyright (c) 2018-2025 The Linux Foundation. All rights reserved.
+# Modified in 2026 by olzhas0986
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted (subject to the limitations in the
@@ -52,4 +53,3 @@ mi_ext                                                  /mi_ext                e
 /dev/block/bootdevice/by-name/misc                      /misc                  emmc    defaults                                             defaults
 /dev/block/bootdevice/by-name/persist                   /persist               ext4    noatime,nosuid,nodev,barrier=1                       wait,check
 /dev/block/bootdevice/by-name/rescue                    /cache                 ext4    noatime,nosuid,nodev,barrier=1                       wait
-#

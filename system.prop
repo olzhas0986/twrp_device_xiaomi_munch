@@ -1,3 +1,5 @@
+# Modified in 2026 by olzhas0986
+#
 ro.adb.secure=0
 ro.boot.dynamic_partitions=true
 
@@ -10,4 +12,3 @@ ro.charger.enable_suspend=1
 # other stuff
 persist.sys.isUsbOtgEnabled=true
 ro.crypto.allow_encrypt_override=true
-#

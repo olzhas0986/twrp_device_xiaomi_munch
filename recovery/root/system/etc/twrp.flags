@@ -1,3 +1,5 @@
+# Modified in 2026 by olzhas0986
+#
 # Android fstab file.
 # The filesystem that contains the filesystem checker binary (typically /system) cannot
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
@@ -38,4 +40,3 @@
 
 # Removable storage
 /usb_otg               	auto    /dev/block/sdg1                    /dev/block/sdg4         	   flags=fsflags=utf8;display="USB-Storage";storage;wipeingui;removable
-#
