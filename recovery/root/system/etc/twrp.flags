@@ -38,4 +38,3 @@
 
 # Removable storage
 /usb_otg               	auto    /dev/block/sdg1                    /dev/block/sdg4         	   flags=fsflags=utf8;display="USB-Storage";storage;wipeingui;removable
-#

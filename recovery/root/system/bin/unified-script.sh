@@ -104,4 +104,3 @@ case $variant in
 esac
 
 exit 0
-#

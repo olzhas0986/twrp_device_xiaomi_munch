@@ -1,5 +1,5 @@
-# OrangeFox device tree for alioth (Xiaomi Mi 11X / Redmi K40 / POCO F3)
-This tree is for building OrangeFox Recovery for the _alioth_ devices
+# TWRP device tree for alioth (Xiaomi Mi 11X / Redmi K40 / POCO F3)
+This tree is for building TeamWin Recovery for the _alioth_ devices
 
 The Xiaomi Mi 11X (codenamed _"aliothin"_), Redmi K40 / POCO F3 (codenamed _"alioth"_) is a mid range smartphone from Xiaomi.
 
@@ -32,8 +32,6 @@ The Xiaomi Mi 11X (codenamed _"aliothin"_), Redmi K40 / POCO F3 (codenamed _"ali
 The Mi 11X / Redmi K40 / POCO F3 devices use a Virtual A/B Partition Scheme!
 
 ## Building
-
-You can find a full compile guide for OrangeFox [Here](https://wiki.orangefox.tech/en/dev/building)
 
 _Lunch_ command :
 ```
