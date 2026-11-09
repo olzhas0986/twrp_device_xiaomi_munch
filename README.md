@@ -1,21 +1,21 @@
-# TWRP device tree for alioth (Xiaomi Mi 11X / Redmi K40 / POCO F3)
-This tree is for building TeamWin Recovery for the _alioth_ devices
+# TWRP device tree for munch (Redmi K40S / POCO F4)
+This tree is for building TeamWin Recovery Project for the _munch_ devices
 
-The Xiaomi Mi 11X (codenamed _"aliothin"_), Redmi K40 / POCO F3 (codenamed _"alioth"_) is a mid range smartphone from Xiaomi.
+The Redmi K40S, POCO F4 (codenamed _"munch"_) is a mid range smartphone from Xiaomi.
 
 # Device specifications
 
-| Device       | Xiaomi Mi 11X / Redmi K40 / POCO F3                        |
+| Device       | Redmi K40S / POCO F4                        |
 | -----------: | :----------------------------------------------------------|
-| SoC          | Qualcomm SM8250 Snapdragon 870 5G                          |
-| CPU          | 8x Qualcomm® Kryo™ 585 up to 2.84GHz                       |
+| SoC          | Qualcomm SM8250-AC Snapdragon 870 5G                          |
+| CPU          | 8x Qualcomm® Kryo™ 585 up to 3.2GHz                       |
 | GPU          | Adreno 650                                                 |
-| Memory       | 8GB / 6GB  (LPDDR 5)                                       |
-| Shipped Android version | 11                    			    |
-| Storage      | 128GB  (UFS 3.1)                                           |
-| Battery      | Li-Po 4520 mAh, non-removable                              |
-| Dimensions   | 163.7 x 76.4 x 7.8 mm                                      |
-| Display      | 1080 x 2400 (20:9), 6.67 inches                            |
+| Memory       | 6GB / 8GB / 12GB (LPDDR5)                                       |
+| Shipped Android version | 12                    			    |
+| Storage      | 128GB / 256GB (UFS 3.1)                                           |
+| Battery      | Li-Po 4500 mAh, non-removable                              |
+| Dimensions   | 163.2 × 75.95 × 7.7 mm                                      |
+| Display      | 1080 x 2400 (20:9), 6.67 inches, AMOLED, 120Hz, HDR10+                           |
 
 ## Features
 
@@ -29,13 +29,13 @@ The Xiaomi Mi 11X (codenamed _"aliothin"_), Redmi K40 / POCO F3 (codenamed _"ali
 - vA/B partition functions
 - Vibration
 
-The Mi 11X / Redmi K40 / POCO F3 devices use a Virtual A/B Partition Scheme!
+The Redmi K40S / POCO F4 devices use a Virtual A/B Partition Scheme!
 
 ## Building
 
 _Lunch_ command :
 ```
-lunch twrp_alioth-eng && mka adbd bootimage
+lunch twrp_munch-eng && mka adbd bootimage
 ```
 
 ## Credits

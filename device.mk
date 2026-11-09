@@ -6,7 +6,7 @@
 #
 
 # Our various search paths for Soong namespaces
-MIKONA_SOONG_PATHS := device/xiaomi/alioth
+MIKONA_SOONG_PATHS := device/xiaomi/munch
 
 # Configure base.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)

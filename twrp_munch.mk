@@ -6,11 +6,11 @@
 #
 
 # Release name
-PRODUCT_RELEASE_NAME := alioth
+PRODUCT_RELEASE_NAME := munch
 
 DEVICE_PATH := device/xiaomi/$(PRODUCT_RELEASE_NAME)
 
-# Inherit from alioth device
+# Inherit from munch device
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
 
 # Inherit some common twrp stuff
@@ -21,6 +21,6 @@ PRODUCT_NAME := twrp_$(PRODUCT_RELEASE_NAME)
 PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
 PRODUCT_BRAND := POCO
 PRODUCT_MANUFACTURER := Xiaomi
-PRODUCT_MODEL := POCO F3
+PRODUCT_MODEL := POCO F4
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
