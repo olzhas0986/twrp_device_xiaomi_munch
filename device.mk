@@ -5,37 +5,39 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 
+DEVICE_PATH := device/xiaomi/munch
+
 # Configure base.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
 # Configure core_64_bit_only.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 
-# Configure gsi_keys.mk
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+# GSI keys were renamed in the Android 16 product configuration.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
+
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Configure Virtual A/B
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
-# Enable updating of APEXes
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
-
 # API
+# Retain the original vendor baseline; this is not the recovery's SDK level.
 PRODUCT_SHIPPING_API_LEVEL := 30
 PRODUCT_TARGET_VNDK_VERSION := 31
+BOARD_SHIPPING_API_LEVEL := 30
 
-# frame rate
-TW_FRAMERATE := 120
+# Kona and the bundled vendor blobs use 4 KiB pages.
+PRODUCT_CHECK_PREBUILT_MAX_PAGE_SIZE := false
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-	$(LOCAL_PATH) \
-	vendor/qcom/opensource/commonsys-intf/display
+    $(DEVICE_PATH) \
+    hardware/qcom-caf/bootctrl
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # A/B
-ENABLE_VIRTUAL_AB := true
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
     boot \
@@ -47,14 +49,7 @@ AB_OTA_PARTITIONS += \
     vendor_boot \
     odm \
     vbmeta \
-    vbmeta_system \
-
-# A/B
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
-    POSTINSTALL_OPTIONAL_system=true
+    vbmeta_system
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
@@ -64,18 +59,14 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.1-impl-qti.recovery
 
 PRODUCT_PACKAGES += \
-    otapreopt_script \
-    checkpoint_gc \
-    cppreopts.sh \
     update_engine \
     update_verifier \
     update_engine_sideload
 
 # fastbootd
 PRODUCT_PACKAGES += \
-	android.hardware.fastboot@1.0-impl-mock \
-	android.hardware.fastboot@1.0-impl-mock.recovery \
-	fastbootd
+    android.hardware.fastboot@1.1-impl-mock \
+    fastbootd
 
 # Recovery libs
 TARGET_RECOVERY_DEVICE_MODULES += \
@@ -93,12 +84,12 @@ PRODUCT_PACKAGES += \
     qcom_decrypt \
     qcom_decrypt_fbe
 
-# Crypto
-TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true
-TW_INCLUDE_FBE_METADATA_DECRYPT := true
-BOARD_USES_QCOM_FBE_DECRYPTION := true
-BOARD_USES_METADATA_PARTITION := true
+# Use A16 scheduling profiles for logd and keystore2.
+PRODUCT_COPY_FILES += \
+    system/core/libprocessgroup/profiles/task_profiles.json:recovery/root/system/etc/task_profiles.json
+
+# Launcher for AERA's bundled plugin runtimes.
+PRODUCT_PACKAGES += aera-browser-jail
 
 # Platform
 PLATFORM_VERSION := 99.87.36
@@ -107,6 +98,6 @@ PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 BOOT_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
-# Vibrator
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.vibrator.service
+# The vibrator service and its libraries are supplied by recovery/root.
+
+$(call inherit-product, $(DEVICE_PATH)/aera_munch.mk)

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <!-- Extra sources absent from the minimal AERA 16 manifest. -->
+    <remote name="munch-lineage" fetch="https://github.com/LineageOS" />
+    <project name="android_hardware_qcom_bootctrl"
+             path="hardware/qcom-caf/bootctrl"
+             remote="munch-lineage" revision="lineage-22.2-caf" />
+    <project name="android_vendor_qcom_opensource_interfaces"
+             path="vendor/qcom/opensource/interfaces"
+             remote="munch-lineage" revision="lineage-22.2" />
+</manifest>

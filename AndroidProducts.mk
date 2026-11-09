@@ -4,3 +4,6 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/twrp_munch.mk
+
+COMMON_LUNCH_CHOICES := \
+    twrp_munch-bp2a-eng
