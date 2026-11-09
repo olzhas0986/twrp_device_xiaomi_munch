@@ -6,7 +6,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 
-DEVICE_PATH := device/xiaomi/alioth
+DEVICE_PATH := device/xiaomi/munch
 
 # Architecture
 TARGET_ARCH := arm64
@@ -30,7 +30,7 @@ TARGET_IS_64_BIT := true
 BOARD_VENDOR := xiaomi
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := alioth,aliothin
+TARGET_OTA_ASSERT_DEVICE := munch,munchin
 
 # Platform
 PRODUCT_PLATFORM := kona
@@ -77,7 +77,7 @@ BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE) --board ""
 
 KERNEL_PATH := $(DEVICE_PATH)/prebuilt
 
-TARGET_PREBUILT_KERNEL := $(KERNEL_PATH)/Image.gz-dtb
+TARGET_PREBUILT_KERNEL := $(KERNEL_PATH)/kernel
 
 BOARD_USES_RECOVERY_AS_BOOT := true
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := false

@@ -1,2 +1,2 @@
-require board=alioth|aliothin
+require board=munch|munchin
 
