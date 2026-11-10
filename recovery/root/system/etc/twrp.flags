@@ -36,6 +36,12 @@
 /efsc                  emmc    /dev/block/bootdevice/by-name/fsc                                  flags=backup=1;subpartitionof=/efs1
 /efsg                  emmc    /dev/block/bootdevice/by-name/fsg                                  flags=backup=1;subpartitionof=/efs1
 
+# Additional modem NV partitions
+/mdm1m9kefs1           emmc    /dev/block/bootdevice/by-name/mdm1m9kefs1                           flags=backup=1;display="MDM1 EFS"
+/mdm1m9kefs2           emmc    /dev/block/bootdevice/by-name/mdm1m9kefs2                           flags=backup=1;subpartitionof=/mdm1m9kefs1
+/mdm1m9kefs3           emmc    /dev/block/bootdevice/by-name/mdm1m9kefs3                           flags=backup=1;subpartitionof=/mdm1m9kefs1
+/mdm1m9kefsc           emmc    /dev/block/bootdevice/by-name/mdm1m9kefsc                           flags=backup=1;subpartitionof=/mdm1m9kefs1
+
 # Removable storage
 /usb_otg               	auto    /dev/block/sdg1                    /dev/block/sdg4         	   flags=fsflags=utf8;display="USB-Storage";storage;wipeingui;removable
 #
