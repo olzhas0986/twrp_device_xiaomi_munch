@@ -5,20 +5,15 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 
-# Release name
-PRODUCT_RELEASE_NAME := munch
-
-DEVICE_PATH := device/xiaomi/$(PRODUCT_RELEASE_NAME)
-
 # Inherit from munch device
-$(call inherit-product, $(DEVICE_PATH)/device.mk)
+$(call inherit-product, device/xiaomi/munch/device.mk)
 
 # Inherit some common twrp stuff
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_NAME := twrp_$(PRODUCT_RELEASE_NAME)
-PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
+PRODUCT_NAME := twrp_munch
+PRODUCT_DEVICE := munch
 PRODUCT_BRAND := POCO
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_MODEL := POCO F4
