@@ -164,3 +164,6 @@ RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/tombstoned
 
 # Python
 TW_INCLUDE_PYTHON := true
+
+# High-Speed full OTA Flashing
+TW_HIGHSPEED_FLASHING := true
