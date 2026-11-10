@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copy to .repo/local_manifests/munch.xml before repo sync.
+     Preserve the working Qualcomm HIDL 1.1 GPT boot-control implementation.
+     The AERA common manifest does not provide these device dependencies. -->
+<manifest>
+    <remote name="munch-lineage" fetch="https://github.com/LineageOS" />
+    <project name="android_hardware_qcom_bootctrl"
+             path="hardware/qcom-caf/bootctrl"
+             remote="munch-lineage"
+             revision="9ed7376299a15399624ebff4fcf8b8a162cd6c34" />
+    <project name="android_vendor_qcom_opensource_interfaces"
+             path="vendor/qcom/opensource/interfaces"
+             remote="munch-lineage"
+             revision="dd3c9a9a2a136f649fa8ece063aea2ac0e581ec0" />
+</manifest>

@@ -19,6 +19,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 # Configure Virtual A/B
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
 
+# Use scheduling profiles from the same platform as init, logd and keystore2.
+PRODUCT_COPY_FILES += \
+    system/core/libprocessgroup/profiles/task_profiles.json:recovery/root/system/etc/task_profiles.json
+
+# The existing kernel and vendor blobs use 4 KiB pages.
+PRODUCT_CHECK_PREBUILT_MAX_PAGE_SIZE := false
+
 # API
 PRODUCT_SHIPPING_API_LEVEL := 30
 PRODUCT_TARGET_VNDK_VERSION := 31
@@ -26,7 +33,7 @@ PRODUCT_TARGET_VNDK_VERSION := 31
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
 	$(DEVICE_PATH) \
-	vendor/qcom/opensource/commonsys-intf/display
+    hardware/qcom-caf/bootctrl
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
@@ -67,11 +74,10 @@ PRODUCT_PACKAGES += \
     update_verifier \
     update_engine_sideload
 
-# fastbootd
+# fastbootd: the A16 mock module is already recovery-only.
 PRODUCT_PACKAGES += \
-	android.hardware.fastboot@1.0-impl-mock \
-	android.hardware.fastboot@1.0-impl-mock.recovery \
-	fastbootd
+    android.hardware.fastboot@1.0-impl-mock \
+    fastbootd
 
 # Recovery libs
 TARGET_RECOVERY_DEVICE_MODULES += \
