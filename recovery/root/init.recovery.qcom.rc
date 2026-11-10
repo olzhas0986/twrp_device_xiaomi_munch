@@ -29,6 +29,12 @@
 
 import /init.recovery.qcom_decrypt.rc
 
+on early-init
+    # An inherited vendor_boot fragment uses manifest version 9.0, which
+    # recovery's libvintf 4.0 cannot parse. Remove the ramdisk copy before
+    # hwservicemanager and keystore2 read the framework manifest.
+    rm /system/etc/vintf/manifest/boot-service.qti.xml
+
 on fs
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
     chown system system /sys/bus/i2c/drivers/aw8697_haptic/2-005a/f0_save
