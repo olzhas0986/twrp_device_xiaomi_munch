@@ -8,7 +8,7 @@
 # Inherit from munch device
 $(call inherit-product, device/xiaomi/munch/device.mk)
 
-# Inherit some common twrp stuff
+# Inherit the AERA manifest's TWRP product defaults
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Device identifier. This must come after all inclusions

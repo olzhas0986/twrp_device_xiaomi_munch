@@ -5,6 +5,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 
+DEVICE_PATH := device/xiaomi/munch
+
 # Configure base.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
@@ -15,21 +17,15 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
 # Configure Virtual A/B
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
-
-# Enable updating of APEXes
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
 
 # API
 PRODUCT_SHIPPING_API_LEVEL := 30
 PRODUCT_TARGET_VNDK_VERSION := 31
 
-# frame rate
-TW_FRAMERATE := 120
-
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-	$(LOCAL_PATH) \
+	$(DEVICE_PATH) \
 	vendor/qcom/opensource/commonsys-intf/display
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
