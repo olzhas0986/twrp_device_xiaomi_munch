@@ -1,0 +1,12 @@
+on property:sys.aera.wlan.up=1
+    setprop sys.aera.wlan.up 0
+    mkdir /tmp/recovery 0755 root root
+    mkdir /tmp/recovery/sockets 0770 root wifi
+    start wpa_supplicant
+
+service wpa_supplicant /system/bin/sh /system/bin/aera_wlan_start.sh
+    disabled
+    oneshot
+    user root
+    group root wifi inet net_admin
+    seclabel u:r:recovery:s0

@@ -42,6 +42,7 @@ AERA_INCLUDE_RESETPROP := true
 AERA_EXCLUDE_APEX := true
 AERA_SUPPORT_INPUT_AIDL_HAPTICS := true
 AERA_INCLUDE_PYTHON := true
+AERA_ENABLE_WLAN := 1
 
 # Logs for first boot and decryption diagnosis.
 AERA_INCLUDE_LOGCAT := true
